@@ -8,13 +8,21 @@ router.get("/api/notes", (req, res) => {
 
 // Populate previous notes info on right side of screen
 router.get("/:id", (req, res) => {
-
+    function findById(id, notes) {
+        const result = notes.filter(note => note.id === id);
+        return result;
+    }
+    const result = findById(req.params.id, notes)
+    if (result) {
+        res.json(result);
+    } else {
+        res.send(404);
+    }
 });
 
 // Write new note
 router.post("/api/notes", (req, res) => {
     const note = req.body;
-    req.body.id = notes.length;
     notes.push(note);
     res.json(notes);
 });

@@ -42,6 +42,14 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
+const openNote = (id) =>
+  fetch(`/api/notes/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
