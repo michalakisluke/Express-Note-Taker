@@ -21,14 +21,12 @@ router.get("/:id", (req, res) => {
 });
 
 // Write new note
+// Need to add something to assign id to these new notes
 router.post("/api/notes", (req, res) => {
     const note = req.body;
     notes.push(note);
     res.json(notes);
 });
-
-
-// Get text and title from note on the left
 
 // Delete a note
 // router.delete("/api/note/:id", (req, res) => {
