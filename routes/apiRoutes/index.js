@@ -14,14 +14,12 @@ router.post("/api/notes", (req, res) => {
     res.json(notes);
 });
 
+// Delete note from tab on left
 router.delete("/api/notes/:id", (req, res) => {
     const reqParamId =  parseInt(req.params.id);
-    console.log(reqParamId);
-    console.log(typeof reqParamId);
     const deleteArr = notes.filter(note => {
         return note.id != reqParamId;
     })
-    console.log(deleteArr);
     if (deleteArr) {
         res.json(deleteArr);
     } else {
