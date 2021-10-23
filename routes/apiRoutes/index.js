@@ -15,17 +15,13 @@ router.post("/api/notes", (req, res) => {
 });
 
 router.delete("/api/notes/:id", (req, res) => {
-    function findById(id, notes) {
-        const result = notes.filter(note => note.id === id);
-        console.log(result);
-        return result;
-    }
-    const result = findById(req.params.id, notes)
-    if (result) {
-        console.log('Stops in if')
-        res.json(result);
+    console.log("The req id is " + req.params.id);
+    console.log(notes);
+    const deleteArr = notes.splice(req.params.id, 1);
+    console.log(deleteArr);
+    if (deleteArr) {
+        res.json(deleteArr);
     } else {
-        console.log('Stops in else')
         res.send(404);
     }
 });
