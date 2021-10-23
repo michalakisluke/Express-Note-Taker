@@ -15,9 +15,15 @@ router.post("/api/notes", (req, res) => {
 });
 
 router.delete("/api/notes/:id", (req, res) => {
-    console.log("The req id is " + req.params.id);
-    console.log(notes);
-    const deleteArr = notes.splice(req.params.id, 1);
+    // console.log("The req id is " + req.params.id);
+    // console.log(typeof req.params.id);
+    // console.log(notes);
+    const reqParamId =  parseInt(req.params.id);
+    console.log(reqParamId);
+    console.log(typeof reqParamId);
+    const deleteArr = notes.filter(note => {
+        return note.id != reqParamId;
+    })
     console.log(deleteArr);
     if (deleteArr) {
         res.json(deleteArr);
